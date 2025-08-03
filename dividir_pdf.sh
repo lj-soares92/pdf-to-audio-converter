@@ -7,7 +7,7 @@
 
 # --- Configurações do Livro ---
 # SUBSTITUA 'book_name.pdf' pelo nome do seu arquivo PDF.
-INPUT_PDF="book_name.pdf"
+INPUT_PDF="$1"
 
 # O diretório de saída será o diretório atual (representado por '.')
 OUTPUT_DIR="."
