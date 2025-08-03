@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# Loop para processar todos os arquivos com a extensão .txt na pasta
+# Loop to process all files with the .txt extension in the folder
 for file in *.txt; do
-    # Extrai o nome do arquivo sem a extensão (ex: de "File01.txt" para "File01")
+    # Extracts the filename without the extension (e.g., from "File01.txt" to "File01")
     base_name="${file%.*}"
     
-    echo "Convertendo '${file}' para '${base_name}.wav'..."
+    echo "Converting '${file}' to '${base_name}.wav'..."
 
-    # Converte o texto para um arquivo .wav
+    # Converts the text to a .wav file
     text2wave "${file}" -o "${base_name}.wav"
 done
 
-echo "Conversão de todos os arquivos concluída!"
+echo "Conversion of all files completed!"

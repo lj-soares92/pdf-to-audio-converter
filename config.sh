@@ -1,41 +1,41 @@
 #!/bin/bash
 
-# --- Verifica e Instala as Dependências ---
-# Este script irá verificar se os pacotes necessários estão instalados e
-# os instalará caso não estejam.
+# --- Check and Install Dependencies ---
+# This script will check if the required packages are installed and
+# will install them if they are not.
 
-# Função para verificar e instalar um pacote
+# Function to check and install a package
 check_and_install() {
     PACKAGE_NAME=$1
     if ! dpkg -s "$PACKAGE_NAME" >/dev/null 2>&1; then
-        echo "O pacote '$PACKAGE_NAME' não está instalado. Instalando agora..."
+        echo "The package '$PACKAGE_NAME' is not installed. Installing now..."
         sudo apt-get update
         sudo apt-get install -y "$PACKAGE_NAME"
     else
-        echo "O pacote '$PACKAGE_NAME' já está instalado."
+        echo "The package '$PACKAGE_NAME' is already installed."
     fi
 }
 
-echo "--- Iniciando a configuração das dependências ---"
+echo "--- Starting dependency configuration ---"
 
-# Necessário para 'dividir_pdf.sh'
-# Este script usa 'pdftk' para dividir um PDF em capítulos com base em marcadores.
-# Observação: 'pdftk' não está disponível nos repositórios padrão do Ubuntu em algumas versões mais recentes.
-# Pode ser necessário um PPA para instalá-lo.
+# Required for 'split_pdf.sh'
+# This script uses 'pdftk' to split a PDF into chapters based on bookmarks.
+# Note: 'pdftk' is not available in standard Ubuntu repositories on some newer versions.
+# A PPA might be required to install it.
 check_and_install pdftk
 
-# Necessário para 'convert_pdfs.sh'
-# Este script usa 'pdftotext' para converter arquivos PDF para TXT.
-# O comando 'pdftotext' faz parte do pacote 'poppler-utils'.
+# Required for 'convert_pdfs.sh'
+# This script uses 'pdftotext' to convert PDF files to TXT.
+# The 'pdftotext' command is part of the 'poppler-utils' package.
 check_and_install poppler-utils
 
-# Necessário para 'converter.sh'
-# Este script usa 'text2wave' para converter arquivos de texto para áudio WAV.
-# O comando 'text2wave' faz parte do sistema de síntese de voz 'festival'.
+# Required for 'converter.sh'
+# This script uses 'text2wave' to convert text files to WAV audio.
+# The 'text2wave' command is part of the 'festival' speech synthesis system.
 check_and_install festival
 
-# Necessário para 'wave2opus.sh'
-# Este script usa 'ffmpeg' para converter arquivos de áudio WAV para o formato Opus.
+# Required for 'wave2opus.sh'
+# This script uses 'ffmpeg' to convert WAV audio files to Opus format.
 check_and_install ffmpeg
 
-echo "--- Configuração de dependências finalizada ---"
+echo "--- Dependency configuration finished ---"

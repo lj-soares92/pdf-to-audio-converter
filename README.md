@@ -1,51 +1,50 @@
-# Conversor de PDF para Áudio
+## PDF to Audio Converter
+This project is a set of Bash scripts designed to automate the conversion of a book in PDF format into a series of audio files, with each audio file representing a chapter of the book.
 
-Este projeto é um conjunto de scripts Bash projetado para automatizar a conversão de um livro em formato PDF para uma série de arquivos de áudio, com cada arquivo de áudio representando um capítulo do livro.
+The workflow includes splitting the PDF into individual chapters (based on bookmarks), converting each chapter to text, transforming that text into audio in WAV format, and finally, converting the audio to the Opus format, which is more efficient in terms of compression.
 
-O fluxo de trabalho inclui a divisão do PDF em capítulos individuais (baseado em marcadores), a conversão de cada capítulo para texto, a transformação desse texto em áudio no formato WAV e, finalmente, a conversão do áudio para o formato Opus, que é mais eficiente em termos de compactação.
+## Prerequisites
+For the scripts to work correctly, you need to have the following dependencies installed on your Linux (Ubuntu) system:
 
-## Pré-requisitos
+pdftk: Used to split the PDF into chapters.
 
-Para que os scripts funcionem corretamente, você precisa ter as seguintes dependências instaladas no seu sistema Linux (Ubuntu):
+poppler-utils: Provides the pdftotext command to convert PDFs to text files.
 
-* **`pdftk`**: Utilizado para dividir o PDF em capítulos.
-* **`poppler-utils`**: Fornece o comando `pdftotext` para converter PDFs para arquivos de texto.
-* **`festival`**: Um sistema de síntese de voz que inclui o comando `text2wave` para converter texto em áudio WAV.
-* **`ffmpeg`**: Uma ferramenta poderosa para manipular arquivos de áudio e vídeo, usada aqui para converter arquivos WAV para o formato Opus.
+festival: A speech synthesis system that includes the text2wave command to convert text to WAV audio.
 
-## Como Usar
-O processo completo é executado através de um único script principal, init.sh, que gerencia a sequência de todas as tarefas. Você deve fornecer o nome do seu arquivo PDF como um parâmetro para este script.
+ffmpeg: A powerful tool for manipulating audio and video files, used here to convert WAV files to the Opus format.
 
-## Passo 1: Preparar o Livro
-Coloque o seu arquivo PDF na mesma pasta dos scripts.
+## How to Use
+The complete process is executed through a single main script, init.sh, which manages the sequence of all tasks. You must provide the name of your PDF file as a parameter to this script.
 
-Certifique-se de que o PDF possui marcadores (bookmarks) de nível 1 para que o script split_pdf.sh possa identificar corretamente os capítulos.
+## Step 1: Prepare the Book
+Place your PDF file in the same folder as the scripts.
 
-## Passo 2: Dar Permissão de Execução ao Script
-Antes de executar o script init.sh pela primeira vez, você precisa conceder permissão de execução a ele. Abra o terminal na pasta do projeto e use o seguinte comando:
+Ensure the PDF has level 1 bookmarks so the split_pdf.sh script can correctly identify the chapters.
+
+## Step 2: Grant Execution Permission to the Script
+Before running the init.sh script for the first time, you need to grant it execution permission. Open the terminal in the project folder and use the following command:
 
 chmod +x init.sh
 
-## Passo 3: Executar o Processo de Conversão
-Agora você pode executar o script init.sh, passando o nome do seu arquivo PDF como argumento.
+## Step 3: Run the Conversion Process
+Now you can run the init.sh script, passing the name of your PDF file as an argument.
 
-./init.sh nome_do_seu_livro.pdf
+./init.sh your_book_name.pdf
 
-O script init.sh irá então executar as seguintes tarefas em sequência:
+The init.sh script will then execute the following tasks in sequence:
 
-Verificar e instalar as dependências necessárias (se ainda não estiverem instaladas).
+Check for and install the necessary dependencies (if not already installed).
 
-Dividir o arquivo PDF em arquivos separados, um para cada capítulo.
+Split the PDF file into separate files, one for each chapter.
 
-Converter cada arquivo PDF de capítulo para texto (.txt).
+Convert each chapter's PDF file to text (.txt).
 
-Converter cada arquivo de texto para áudio no formato WAV (.wav).
+Convert each text file to audio in WAV format (.wav).
 
-Converter o áudio WAV para o formato Opus (.opus) e, em seguida, remover os arquivos WAV para limpar a pasta.
+Convert the WAV audio to the Opus format (.opus) and then remove the WAV files to clean up the folder.
 
-Após a execução bem-sucedida, você terá uma série de arquivos de áudio Opus na mesma pasta, um para cada capítulo do seu livro.
+After successful execution, you will have a series of Opus audio files in the same folder, one for each chapter of your book.
 
-Autor: Lucas de Jesus Soares
-Licença: MIT
-
-
+Author: Lucas de Jesus Soares
+License: MIT

@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Script para converter todos os arquivos PDF em uma pasta para TXT.
-# Ele requer o pacote 'poppler-utils' (que contém o pdftotext) instalado.
+# Script to convert all PDF files in a folder to TXT.
+# It requires the 'poppler-utils' package (which contains pdftotext) to be installed.
 
-# Percorre todos os arquivos que terminam com a extensão .pdf
+# Loops through all files that end with the .pdf extension
 for chapter in *.pdf
 do
-  # Converte cada arquivo para o formato TXT
-  # O novo arquivo .txt terá o mesmo nome do original
+  # Converts each file to TXT format
+  # The new .txt file will have the same name as the original
   pdftotext "$chapter"
 done

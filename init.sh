@@ -1,58 +1,58 @@
 #!/bin/bash
 
-# --- Script de Inicialização para o Conversor de PDF para Áudio ---
-# Este script executa a sequência completa de scripts para converter um PDF
-# em uma série de arquivos de áudio Opus, um para cada capítulo.
+# --- Initialization Script for the PDF to Audio Converter ---
+# This script executes the complete sequence of scripts to convert a PDF
+# into a series of Opus audio files, one for each chapter.
 
-# Checa se o nome do arquivo foi fornecido como parâmetro
+# Checks if the filename was provided as a parameter
 if [ -z "$1" ]; then
-    echo "Erro: Por favor, forneça o nome do arquivo PDF como argumento."
-    echo "Uso: ./init.sh <nome_do_arquivo.pdf>"
+    echo "Error: Please provide the PDF filename as an argument."
+    echo "Usage: ./init.sh <your_file_name.pdf>"
     exit 1
 fi
 
 INPUT_PDF="$1"
 
-# 1. Configurar o ambiente (instalar dependências)
-echo "Passo 1/5: Configurando o ambiente e instalando as dependências..."
+# 1. Configure the environment (install dependencies)
+echo "Step 1/5: Configuring the environment and installing dependencies..."
 ./config.sh
 if [ $? -ne 0 ]; then
-    echo "Erro na configuração. Verifique se o 'config.sh' foi executado corretamente."
+    echo "Error in configuration. Check if 'config.sh' was executed correctly."
     exit 1
 fi
 
-# 2. Dividir o PDF em capítulos individuais
-echo "Passo 2/5: Dividindo o PDF em capítulos..."
-# O script 'dividir_pdf.sh' agora é chamado com o nome do arquivo como parâmetro
+# 2. Split the PDF into individual chapters
+echo "Step 2/5: Splitting the PDF into chapters..."
+# The 'split_pdf.sh' script is now called with the filename as a parameter
 ./split_pdf.sh "$INPUT_PDF"
 if [ $? -ne 0 ]; then
-    echo "Erro ao dividir o PDF. Verifique o arquivo de entrada e o script 'dividir_pdf.sh'."
+    echo "Error splitting the PDF. Check the input file and the 'split_pdf.sh' script."
     exit 1
 fi
 
-# 3. Converter os PDFs dos capítulos para texto
-echo "Passo 3/5: Convertendo PDFs para texto..."
+# 3. Convert the chapter PDFs to text
+echo "Step 3/5: Converting PDFs to text..."
 ./convert_pdfs.sh
 if [ $? -ne 0 ]; then
-    echo "Erro ao converter PDFs para texto. Verifique o script 'convert_pdfs.sh'."
+    echo "Error converting PDFs to text. Check the 'convert_pdfs.sh' script."
     exit 1
 fi
 
-# 4. Converter os arquivos de texto para áudio WAV
-echo "Passo 4/5: Convertendo texto para áudio WAV..."
+# 4. Convert the text files to WAV audio
+echo "Step 4/5: Converting text to WAV audio..."
 ./converter.sh
 if [ $? -ne 0 ]; then
-    echo "Erro ao converter texto para áudio WAV. Verifique o script 'converter.sh'."
+    echo "Error converting text to WAV audio. Check the 'converter.sh' script."
     exit 1
 fi
 
-# 5. Converter áudio WAV para Opus e remover os arquivos temporários
-echo "Passo 5/5: Convertendo WAV para Opus e limpando arquivos temporários..."
+# 5. Convert WAV audio to Opus and remove temporary files
+echo "Step 5/5: Converting WAV to Opus and cleaning up temporary files..."
 ./wave2opus.sh
 if [ $? -ne 0 ]; then
-    echo "Erro ao converter WAV para Opus. Verifique o script 'wave2opus.sh'."
+    echo "Error converting WAV to Opus. Check the 'wave2opus.sh' script."
     exit 1
 fi
 
-echo "--- Processo de conversão concluído com sucesso! ---"
-echo "Os arquivos de áudio Opus estão prontos na pasta atual."
+echo "--- Conversion process completed successfully! ---"
+echo "The Opus audio files are ready in the current folder."

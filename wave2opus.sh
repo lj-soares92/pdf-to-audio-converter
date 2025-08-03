@@ -1,17 +1,17 @@
 #!/bin/bash
 
-# Loop para processar todos os arquivos com a extensão .wav na pasta
+# Loop to process all files with the .wav extension in the folder
 for file in *.wav; do
-    # Extrai o nome do arquivo sem a extensão (ex: de "audio.wav" para "audio")
+    # Extracts the filename without the extension (e.g., from "audio.wav" to "audio")
     base_name="${file%.*}"
     
-    echo "Convertendo '${file}' para '${base_name}.opus'..."
+    echo "Converting '${file}' to '${base_name}.opus'..."
 
-    # Converte o arquivo .wav para .opus usando o ffmpeg
-    # O "&&" garante que o arquivo .wav só será apagado se a conversão for bem-sucedida
+    # Converts the .wav file to .opus using ffmpeg
+    # The "&&" ensures that the .wav file will only be deleted if the conversion is successful
     ffmpeg -i "${file}" "${base_name}.opus" && rm "${file}"
     
-    echo "Arquivo '${file}' apagado."
+    echo "File '${file}' deleted."
 done
 
-echo "Conversão de todos os arquivos concluída!"
+echo "Conversion of all files completed!"
