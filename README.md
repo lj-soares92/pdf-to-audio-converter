@@ -16,17 +16,17 @@ Para que os scripts funcionem corretamente, você precisa ter as seguintes depen
 ## Como Usar
 O processo completo é executado através de um único script principal, init.sh, que gerencia a sequência de todas as tarefas. Você deve fornecer o nome do seu arquivo PDF como um parâmetro para este script.
 
-Passo 1: Preparar o Livro
+## Passo 1: Preparar o Livro
 Coloque o seu arquivo PDF na mesma pasta dos scripts.
 
 Certifique-se de que o PDF possui marcadores (bookmarks) de nível 1 para que o script dividir_pdf.sh possa identificar corretamente os capítulos.
 
-Passo 2: Dar Permissão de Execução ao Script
+## Passo 2: Dar Permissão de Execução ao Script
 Antes de executar o script init.sh pela primeira vez, você precisa conceder permissão de execução a ele. Abra o terminal na pasta do projeto e use o seguinte comando:
 
 chmod +x init.sh
 
-Passo 3: Executar o Processo de Conversão
+## Passo 3: Executar o Processo de Conversão
 Agora você pode executar o script init.sh, passando o nome do seu arquivo PDF como argumento.
 
 ./init.sh nome_do_seu_livro.pdf

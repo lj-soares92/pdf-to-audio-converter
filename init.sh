@@ -24,7 +24,7 @@ fi
 # 2. Dividir o PDF em capítulos individuais
 echo "Passo 2/5: Dividindo o PDF em capítulos..."
 # O script 'dividir_pdf.sh' agora é chamado com o nome do arquivo como parâmetro
-./dividir_pdf.sh "$INPUT_PDF"
+./split_pdf.sh "$INPUT_PDF"
 if [ $? -ne 0 ]; then
     echo "Erro ao dividir o PDF. Verifique o arquivo de entrada e o script 'dividir_pdf.sh'."
     exit 1
