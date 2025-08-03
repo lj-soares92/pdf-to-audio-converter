@@ -19,7 +19,7 @@ O processo completo é executado através de um único script principal, init.sh
 ## Passo 1: Preparar o Livro
 Coloque o seu arquivo PDF na mesma pasta dos scripts.
 
-Certifique-se de que o PDF possui marcadores (bookmarks) de nível 1 para que o script dividir_pdf.sh possa identificar corretamente os capítulos.
+Certifique-se de que o PDF possui marcadores (bookmarks) de nível 1 para que o script split_pdf.sh possa identificar corretamente os capítulos.
 
 ## Passo 2: Dar Permissão de Execução ao Script
 Antes de executar o script init.sh pela primeira vez, você precisa conceder permissão de execução a ele. Abra o terminal na pasta do projeto e use o seguinte comando:
