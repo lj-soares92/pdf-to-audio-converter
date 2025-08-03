@@ -13,7 +13,7 @@ Para que os scripts funcionem corretamente, você precisa ter as seguintes depen
 * **`festival`**: Um sistema de síntese de voz que inclui o comando `text2wave` para converter texto em áudio WAV.
 * **`ffmpeg`**: Uma ferramenta poderosa para manipular arquivos de áudio e vídeo, usada aqui para converter arquivos WAV para o formato Opus.
 
-Como Usar
+## Como Usar
 O processo completo é executado através de um único script principal, init.sh, que gerencia a sequência de todas as tarefas. Você deve fornecer o nome do seu arquivo PDF como um parâmetro para este script.
 
 Passo 1: Preparar o Livro
