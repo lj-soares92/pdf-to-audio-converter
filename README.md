@@ -6,10 +6,10 @@ The workflow includes splitting the PDF into individual chapters (based on bookm
 ## Prerequisites
 For the scripts to work correctly, you need to have the following dependencies installed on your Linux (Ubuntu) system:
 
-* **`pdftk`**: Utilizado para dividir o PDF em capítulos.
-* **`poppler-utils`**: Fornece o comando `pdftotext` para converter PDFs para arquivos de texto.
-* **`festival`**: Um sistema de síntese de voz que inclui o comando `text2wave` para converter texto em áudio WAV.
-* **`ffmpeg`**: Uma ferramenta poderosa para manipular arquivos de áudio e vídeo, usada aqui para converter arquivos WAV para o formato Opus.
+* **`pdftk`**: Used to split the PDF into chapters.
+* **`poppler-utils`**: Provides the `pdftotext` command to convert PDFs to text files.
+* **`festival`**: A speech synthesis system that includes the `text2wave` command to convert text to WAV audio.
+* **`ffmpeg`**: A powerful tool for manipulating audio and video files, used here to convert WAV files to the Opus format.
 
 ## How to Use
 The complete process is executed through a single main script, init.sh, which manages the sequence of all tasks. You must provide the name of your PDF file as a parameter to this script.
